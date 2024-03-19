@@ -1,0 +1,62 @@
+from News.models import *
+
+u1 = User.objects.create(username='Vasya')
+
+u2 = User.objects.create(username='Pasha')
+
+a1 = Author.objects.create(user=u1)
+
+
+a2 = Author.objects.create(user=u2)
+
+
+cat1 = Category.objects.create(name='Sport')
+
+cat2 = Category.objects.create(name='Politika')
+
+cat3 = Category.objects.create(name='Biznes')
+
+cat4 = Category.objects.create(name='Kultura')
+
+
+p1 = Post.objects.create(author=a1, title='zagolovok1', text='text1', post_type='NE')
+
+p2 = Post.objects.create(author=a2, title='zagolovok2', text='text2', post_type='AR')
+
+p3 = Post.objects.create(author=a1, title='zagolovok3', text='text3', post_type='AR')
+
+
+p1.category.add(cat1)
+
+p1.category.add(cat2)
+
+p2.category.add(cat3)
+
+p3.category.add(cat4)
+
+
+c1 = Comment.objects.create(user=u1, text='hfsdiufhsdufh', post=p1)
+
+c2 = Comment.objects.create(user=u2, text='hfsdiufhsdusdfsfh', post=p2)
+
+c3 = Comment.objects.create(user=u1, text='hfsddsfdsfsiufhsdufh', post=p3)
+
+c4 = Comment.objects.create(user=u2, text='hfsdiufhsdfsdffsdufh', post=p2)
+
+
+p1.like()
+p2.dislike()
+p3.like()
+c1.like()
+c2.like()
+c3.dislike()
+c4.dislike()
+
+
+a1.update_rating()
+
+
+
+
+
+
